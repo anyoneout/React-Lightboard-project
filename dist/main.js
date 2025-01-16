@@ -1561,6 +1561,125 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ "./node_modules/scheduler/cjs/scheduler.development.js");
 }
 
+/***/ }),
+
+/***/ "./src/App.js":
+/*!********************!*\
+  !*** ./src/App.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ App)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Lightboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Lightboard */ "./src/Lightboard.js");
+
+
+function App() {
+  const [gridSize, setGridSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(5);
+  function handleGridSizeChange(event) {
+    setGridSize(parseInt(event.target.value, 10));
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Lightboard"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "grid-size"
+  }, "Grid Size:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "grid-size",
+    type: "number",
+    value: gridSize,
+    onChange: handleGridSizeChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Lightboard__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    gridSize: gridSize
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/Lightboard.js":
+/*!***************************!*\
+  !*** ./src/Lightboard.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Lightboard)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _LightboardCell__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LightboardCell */ "./src/LightboardCell.js");
+
+
+function Lightboard(props) {
+  const {
+    gridSize
+  } = props;
+  function generateGrid() {
+    const grid = [];
+    for (let row = 0; row < gridSize; row++) {
+      const rowCells = [];
+      for (let col = 0; col < gridSize; col++) {
+        rowCells.push(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LightboardCell__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: `${row}-${col}`
+        }));
+      }
+      grid.push(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        key: row,
+        className: "row"
+      }, rowCells));
+    }
+    return grid;
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "lightboard"
+  }, generateGrid());
+}
+
+/***/ }),
+
+/***/ "./src/LightboardCell.js":
+/*!*******************************!*\
+  !*** ./src/LightboardCell.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ LightboardCell)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function LightboardCell() {
+  const [color, setColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("white");
+  const colors = ["orange", "red", "blue", "green", "yellow"];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    const interval = setInterval(function () {
+      setColor(function (prevColor) {
+        const currentIndex = colors.indexOf(prevColor);
+        const nextIndex = (currentIndex + 1) % colors.length;
+        return colors[nextIndex];
+      });
+    }, 1000);
+    return function cleanup() {
+      clearInterval(interval);
+    };
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "cell",
+    style: {
+      backgroundColor: color,
+      width: "5px",
+      height: "10px",
+      margin: "1px",
+      display: "inline-block"
+    }
+  });
+}
+
 /***/ })
 
 /******/ 	});
@@ -1653,10 +1772,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./src/App.js");
+
 
 
 const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(window.bodyTag);
-root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("main", null)));
+root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 })();
 
 /******/ })()
